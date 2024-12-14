@@ -3,7 +3,7 @@ package archiver
 import (
 	"encoding/json"
 	"time"
-
+	"crypto/tls"
 	"github.com/go-redis/redis"
 	"github.com/rijdendetreinen/gotrain/models"
 	log "github.com/sirupsen/logrus"
@@ -26,6 +26,7 @@ func Connect() error {
 		Addr:     redisAddress,
 		Password: redisPassword,
 		DB:       redisDbNumber,
+		TLSConfig: &tls.Config{InsecureSkipVerify: false}, // Use true if testing with self-signed certs
 	})
 
 	result := redisDb.Ping()
