@@ -26,7 +26,7 @@ func Connect() error {
 		Addr:     redisAddress,
 		Password: redisPassword,
 		DB:       redisDbNumber,
-		TLSConfig: &tls.Config{InsecureSkipVerify: false}, // Use true if testing with self-signed certs
+		TLSConfig: &tls.Config{InsecureSkipVerify: true}, // Use true if testing with self-signed certs
 	})
 
 	result := redisDb.Ping()
